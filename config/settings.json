@@ -1,0 +1,26 @@
+{
+  "sendgrid_key": "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",
+  "stripe_secret_key": "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",
+  "stripe_price_id": "price_1TMwuxHe9iTCk9aJIItJlJ91",
+  "stripe_publishable_key": "pk_live_51TK0zjHe9iTCk9aJUaKtgxn9J0eWzWaJh5H1sYehr2mFgOHz8HtKa5qiIwLImskR3r2yf4gxpw8px32Pgfrtkwio00JuB1Sc7W",
+  "smtp_host": "smtp.gmail.com",
+  "smtp_port": 587,
+  "smtp_user": "kaylebwino@gmail.com",
+  "smtp_password": "ysec rulw nhcb ndxk",
+  "from_email": "Vehicle Sniper <kaylebwino@gmail.com>",
+
+  "market_prices": {
+    "Toyota Camry": 18000,
+    "Honda Accord": 18500,
+    "Ford F-150": 28000,
+    "Honda Civic": 17000,
+    "Toyota Corolla": 16000
+  },
+
+  "default_filters": {
+    "max_price": 15000,
+    "max_miles": 100000,
+    "min_year": 2018,
+    "radius": 50
+  }
+}
