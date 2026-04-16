@@ -1,10 +1,10 @@
 {
-  "name": "vehicle-sniper",
-  "version": "1.0.0",
-  "description": "Daily car flip deal alerts",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {}
+  "name": "vehicle-sniper",
+  "version": "1.0.0",
+  "description": "Daily car flip deal alerts",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
 }
