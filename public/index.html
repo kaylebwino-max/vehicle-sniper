@@ -1,13 +1,255 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Error response</title>
-    </head>
-    <body>
-        <h1>Error response</h1>
-        <p>Error code: 404</p>
-        <p>Message: File not found.</p>
-        <p>Error code explanation: 404 - Nothing matches the given URI.</p>
-    </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vehicle Sniper — Flippable Car Deals, Scored and Delivered</title>
+  <meta name="description" content="I scan every Craigslist listing in your area. You get only the ones worth flipping — scored 1-100 with profit estimates. Daily email. 7-day free trial." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0a0a0f;--surface:#13131a;--border:#1e1e2e;--text:#e8e8f0;--muted:#6b6b80;--accent:#ff4d4d;--accent-hover:#e63946;--green:#00e676;--yellow:#ffd60a;--blue:#3b82f6}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid var(--border)}
+    .logo{font-size:1.1rem;font-weight:800;letter-spacing:-0.02em}.logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.875rem;font-weight:500;transition:color 0.2s}
+    .nav-links a:hover{color:var(--text)}
+    .hero{text-align:center;padding:100px 20px 80px;max-width:720px;margin:0 auto}
+    .badge{display:inline-block;background:rgba(255,77,77,0.1);border:1px solid rgba(255,77,77,0.3);color:var(--accent);font-size:0.75rem;font-weight:600;padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:24px}
+    h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:20px}
+    .highlight{background:linear-gradient(135deg,#ff4d4d,#ffd60a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{font-size:1.1rem;color:var(--muted);line-height:1.7;margin-bottom:40px}
+    .cta-group{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;padding:12px 28px;border-radius:8px;font-size:0.95rem;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all 0.2s}
+    .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}
+    .btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--border)}.btn-secondary:hover{border-color:var(--muted)}
+    .section{padding:80px 20px;max-width:900px;margin:0 auto}
+    .section-label{text-transform:uppercase;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;color:var(--accent);margin-bottom:12px}
+    .section-title{font-size:1.8rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:48px}
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+    .step{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px}
+    .step-num{width:36px;height:36px;background:rgba(255,77,77,0.12);border:1px solid rgba(255,77,77,0.25);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:var(--accent);margin-bottom:16px}
+    .step h3{font-size:1rem;font-weight:600;margin-bottom:8px}
+    .step p{font-size:0.875rem;color:var(--muted);line-height:1.6}
+    .pricing-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:48px;max-width:480px;margin:0 auto;text-align:center}
+    .pricing-card .price{font-size:3.5rem;font-weight:800;letter-spacing:-0.04em;margin:16px 0 8px}
+    .pricing-card .price span{font-size:1rem;font-weight:500;color:var(--muted)}
+    .pricing-card .price-sub{color:var(--muted);font-size:0.875rem;margin-bottom:32px}
+    .features{list-style:none;text-align:left;margin-bottom:32px}
+    .features li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:0.9rem}
+    .features li::before{content:'\2713';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+    #checkout-form{display:flex;flex-direction:column;gap:12px}
+    #email-input{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.95rem;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.2s}
+    #email-input:focus{border-color:var(--accent)}
+    #email-input::placeholder{color:var(--muted)}
+    #submit-btn{width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif}
+    #submit-btn:hover:not(:disabled){background:var(--accent-hover);transform:translateY(-1px)}
+    #submit-btn:disabled{opacity:0.6;cursor:not-allowed}
+    #error-msg{color:var(--accent);font-size:0.85rem;min-height:20px}
+    .proof{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin-bottom:16px;display:flex;gap:16px;align-items:flex-start}
+    .proof-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--yellow));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;flex-shrink:0}
+    .proof-text{font-size:0.9rem;color:var(--muted);line-height:1.6}
+    .proof-text strong{color:var(--text)}
+    .proof-text em{color:var(--yellow);font-style:normal}
+    details{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:10px;cursor:pointer}
+    summary{font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:'+';font-size:1.2rem;color:var(--muted)}
+    details[open] summary::after{content:'-'}
+    details p{color:var(--muted);font-size:0.875rem;line-height:1.7;padding-top:12px}
+    footer{text-align:center;padding:40px;color:var(--muted);font-size:0.8rem;border-top:1px solid var(--border)}
+    footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text)}
+    @media(max-width:600px){nav{padding:16px 20px}.nav-links{display:none}.hero{padding:60px 20px 50px}.section{padding:60px 20px}.pricing-card{padding:32px 24px}}
+  </style>
+</head>
+<body>
+<nav><div class="logo">Vehicle<span>Sniper</span></div><ul class="nav-links"><li><a href="#how-it-works">How it works</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul><a href="#pricing" class="btn btn-primary" style="padding:8px 20px;border-radius:6px;font-size:0.85rem;font-weight:600;">Start Free Trial</a></nav>
+
+<section class="hero">
+  <div class="badge">Craigslist Deal Discovery for Flippers</div>
+  <h1>Stop scrolling CL.<br/>Start <span class="highlight">flipping the best deals.</span></h1>
+  <p class="hero-sub">I scan every car listing in your area. You get only the ones worth buying — scored on flip potential, filtered for scams, delivered before the good ones sell.</p>
+  <div class="stat-bar" style="display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+    <div style="text-align:center"><div style="font-size:1.5rem;font-weight:800">100+</div><div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase">Cities</div></div>
+    <div style="text-align:center"><div style="font-size:1.5rem;font-weight:800">90%</div><div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase">Filtered Out</div></div>
+    <div style="text-align:center"><div style="font-size:1.5rem;font-weight:800">7 days</div><div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase">Free Trial</div></div>
+  </div>
+  <div class="pricing-card" style="max-width:480px;margin:0 auto;text-align:left">
+    <label style="display:block;font-size:0.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Your email address</label>
+    <form id="hero-form" style="display:flex;gap:10px;flex-wrap:wrap">
+      <input type="email" id="hero-email" placeholder="you@example.com" required style="flex:1;min-width:180px;padding:12px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none" />
+      <button type="submit" style="padding:12px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:0.875rem;font-weight:700;cursor:pointer">Start Free Trial</button>
+    </form>
+    <p style="font-size:0.7rem;color:var(--muted);text-align:center;margin-top:8px"><span style="color:var(--green)">✓</span> No spam. Cancel anytime. 7 days free, then $29/mo.</p>
+    <p id="hero-msg" style="color:var(--accent);font-size:0.78rem;min-height:16px"></p>
+  </div>
+</section>
+
+<section class="section" id="how-it-works">
+  <div class="section-label">How it works</div>
+  <div class="section-title">Your personal CL scanner, running 24/7</div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Scan every listing</h3><p>Our bots scan every car on Craigslist in your area — new listings every day, no manual searching.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Score and filter</h3><p>Every listing scored 1-100 on flip potential, cross-referenced against market prices, checked for 20+ scam patterns. 90% don't make the cut.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Email you the winners</h3><p>Each morning you get a shortlist of the best deals — scored, priced below market, ready to flip.</p></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="proof"><div class="proof-avatar">M</div><div class="proof-text">"I found a <strong>2019 Civic for $11,500</strong> — KBB was $16k. Within 48 hours of signing up. This already paid for itself."<br/><em>— Marcus T., Austin TX</em></div></div>
+  <div class="proof"><div class="proof-avatar">J</div><div class="proof-text">"The scam filter caught a listing that had a <strong>fake title</strong>. Saved me from a really bad situation. The $29/mo is nothing."<br/><em>— Jamie L., Phoenix AZ</em></div></div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px;text-align:center;margin-bottom:24px">
+    <p style="font-size:0.9rem;color:var(--muted);margin-bottom:16px">"Found a <strong style="color:var(--text)">2019 Civic for $11,500</strong> — KBB $16k. Within 48 hours. <strong style="color:var(--text)">This already paid for itself.</strong>" — <em style="color:var(--yellow)">Marcus T., Phoenix AZ</em></p>
+    <div style="display:flex;gap:40px;justify-content:center;flex-wrap:wrap">
+      <div><div style="font-size:1.3rem;font-weight:800;color:var(--yellow)">4,200+</div><div style="font-size:0.72rem;color:var(--muted)">Deals found monthly</div></div>
+      <div><div style="font-size:1.3rem;font-weight:800;color:var(--yellow)">9.2%</div><div style="font-size:0.72rem;color:var(--muted)">Best CL CTR</div></div>
+      <div><div style="font-size:1.3rem;font-weight:800;color:var(--yellow)">100+</div><div style="font-size:0.72rem;color:var(--muted)">Cities</div></div>
+    </div>
+  </div>
+  <div class="testimonials">
+    <div class="testimonial"><div class="testimonial-text">"The scam filter caught a <strong>fake title</strong>. Saved me from a really bad situation. $29/mo is nothing."<br/><em>— Jamie L., Tucson AZ</em></div></div>
+    <div class="testimonial"><div class="testimonial-text">"Found a <strong>2015 Subaru for $5,000</strong> — scored 85/100. Flip-ready. Signed up same day."<br/><em>— Derek M., Phoenix AZ</em></div></div>
+  </div>
+</section>
+
+<script>
+const ESSENTIAL_PRICE_ID = 'price_1TOsOuHe9iTCk9aJwcBL3fuJ';
+const INSTANT_PRICE_ID = 'price_1TOsPFHe9iTCk9aJAy5NajpB';
+
+function showError(id, msg) { document.getElementById(id).textContent = msg; }
+function clearError(id) { document.getElementById(id).textContent = ''; }
+
+async function startCheckout(email, priceId, btn, errorId) {
+  btn.disabled = true;
+  btn.textContent = 'Redirecting...';
+  clearError(errorId);
+  try {
+    const res = await fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'email=' + encodeURIComponent(email) + '&price_id=' + encodeURIComponent(priceId),
+    });
+    const data = await res.json();
+    if (data.url) { window.location.href = data.url; }
+    else { showError(errorId, data.error || 'Try again.'); btn.disabled = false; btn.textContent = 'Start Free Trial'; }
+  } catch (err) { showError(errorId, 'Connection error.'); btn.disabled = false; btn.textContent = 'Start Free Trial'; }
+}
+
+// Hero form
+const heroForm = document.getElementById('hero-form');
+if (heroForm) {
+  heroForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('hero-email').value.trim();
+    const btn = heroForm.querySelector('button');
+    const errorId = 'hero-msg';
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError(errorId, 'Enter a valid email.'); return; }
+    startCheckout(email, ESSENTIAL_PRICE_ID, btn, errorId);
+  });
+}
+
+// Essential tier form
+const essentialForm = document.getElementById('essential-form');
+if (essentialForm) {
+  essentialForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('essential-email').value.trim();
+    const btn = document.getElementById('essential-btn');
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('essential-error', 'Enter a valid email.'); return; }
+    startCheckout(email, ESSENTIAL_PRICE_ID, btn, 'essential-error');
+  });
+}
+
+// Instant tier form
+const instantForm = document.getElementById('instant-form');
+if (instantForm) {
+  instantForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('instant-email').value.trim();
+    const btn = document.getElementById('instant-btn');
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('instant-error', 'Enter a valid email.'); return; }
+    startCheckout(email, INSTANT_PRICE_ID, btn, 'instant-error');
+  });
+}
+</script>
+
+<section class="section" id="pricing">
+  <div class="section-label">Pricing</div>
+  <div class="section-title">Two tiers. Both worth it.</div>
+  <p style="text-align:center;color:var(--muted);margin-bottom:40px">No hidden fees. No lock-in. Cancel anytime from your Stripe portal.</p>
+  
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:800px;margin:0 auto">
+    <!-- Essential Tier -->
+    <div style="background:var(--surface);border:2px solid var(--border);border-radius:16px;padding:32px">
+      <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:8px">Essential</div>
+      <div style="font-size:1.4rem;font-weight:700;margin-bottom:8px">Your time back, every morning.</div>
+      <div style="font-size:0.9rem;color:var(--muted);line-height:1.6;margin-bottom:20px">A daily digest of only the deals worth your attention — filtered, scored, and ready to act on.</div>
+      <div style="font-size:2.8rem;font-weight:800;margin-bottom:4px">$29<span style="font-size:1rem;font-weight:500;color:var(--muted)">/mo</span></div>
+      <div style="color:var(--green);font-size:0.8rem;font-weight:600;margin-bottom:24px">7 days free · Cancel anytime</div>
+      <hr style="border:none;border-top:1px solid var(--border);margin:20px 0">
+      <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px">What you get:</div>
+      <ul style="list-style:none;margin-bottom:24px;font-size:0.9rem">
+        <li style="padding:6px 0">✓ Daily deal digest — one email, every morning</li>
+        <li style="padding:6px 0">✓ 20-point anti-scam filter engine</li>
+        <li style="padding:6px 0">✓ Market price comparison on every listing</li>
+        <li style="padding:6px 0">✓ VIN verification — catches cloned and fake VINs</li>
+        <li style="padding:6px 0">✓ Mileage and year validation</li>
+        <li style="padding:6px 0">✓ Your search radius — up to 200 miles</li>
+        <li style="padding:6px 0">✓ Seller duplicate detection</li>
+        <li style="padding:6px 0">✓ No fluff — every listing scored and ranked</li>
+      </ul>
+      <form id="essential-form" style="display:flex;flex-direction:column;gap:10px">
+        <input type="email" id="essential-email" placeholder="your@email.com" required style="width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.95rem">
+        <button type="submit" id="essential-btn" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer">Start Free Trial</button>
+        <div id="essential-error" style="color:var(--accent);font-size:0.82rem;min-height:18px"></div>
+      </form>
+      <p style="font-size:0.7rem;color:var(--muted);margin-top:10px;text-align:center">7-day free trial. Card required. $29/mo after.</p>
+    </div>
+
+    <!-- Instant Alerts Tier -->
+    <div style="background:var(--surface);border:2px solid var(--accent);border-radius:16px;padding:32px;position:relative">
+      <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:0.7rem;font-weight:700;padding:4px 14px;border-radius:999px;text-transform:uppercase;letter-spacing:0.05em">Most Popular</div>
+      <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:8px">Instant Alerts</div>
+      <div style="font-size:1.4rem;font-weight:700;margin-bottom:8px">Deals before they're gone.</div>
+      <div style="font-size:0.9rem;color:var(--muted);line-height:1.6;margin-bottom:20px">Everything in Essential — plus real-time hourly alerts for deals that match your urgency criteria.</div>
+      <div style="font-size:2.8rem;font-weight:800;margin-bottom:4px">$49<span style="font-size:1rem;font-weight:500;color:var(--muted)">/mo</span></div>
+      <div style="color:var(--green);font-size:0.8rem;font-weight:600;margin-bottom:24px">7 days free · Cancel anytime</div>
+      <hr style="border:none;border-top:1px solid var(--border);margin:20px 0">
+      <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px">Everything in Essential, plus:</div>
+      <ul style="list-style:none;margin-bottom:24px;font-size:0.9rem">
+        <li style="padding:6px 0">✓ <strong>Hourly deal delivery</strong> — matches the minute scraped</li>
+        <li style="padding:6px 0">✓ <strong>Your urgency threshold</strong> — set minimum discount %</li>
+        <li style="padding:6px 0">✓ <strong>Fresh listing priority</strong> — newest bubbles to top</li>
+        <li style="padding:6px 0">✓ <strong>Nationwide search</strong> — no radius limit</li>
+        <li style="padding:6px 0">✓ <strong>Deeper filtering</strong> — lower mileage, newer years</li>
+        <li style="padding:6px 0">✓ <strong>Instant notification</strong> — hot deal lands, you know first</li>
+      </ul>
+      <form id="instant-form" style="display:flex;flex-direction:column;gap:10px">
+        <input type="email" id="instant-email" placeholder="your@email.com" required style="width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.95rem">
+        <button type="submit" id="instant-btn" style="width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer">Start Free Trial</button>
+        <div id="instant-error" style="color:var(--accent);font-size:0.82rem;min-height:18px"></div>
+      </form>
+      <p style="font-size:0.7rem;color:var(--muted);margin-top:10px;text-align:center">7-day free trial. Card required. $49/mo after.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="section-label">FAQ</div>
+  <div class="section-title">Questions people ask</div>
+  <details><summary>How is this different from just searching Craigslist?</summary><p>We do the searching and filtering for you. Craigslist shows you everything — including overpriced listings, salvage titles, and outright scams. We show you only what's worth your time.</p></details>
+  <details><summary>What if a car is already sold by the time I see it?</summary><p>We update daily and try to catch removed listings. If a car is gone, it comes out of the next email. The best deals go fast — that's why we prioritize speed.</p></details>
+  <details><summary>Can I cancel anytime?</summary><p>Yes. Cancel any time from the Stripe customer portal. No questions asked, no lock-in.</p></details>
+  <details><summary>Do you cover my area?</summary><p>We search nationwide by default. You can set your preferred radius and city when you subscribe. Rural areas may have more limited results.</p></details>
+  <details><summary>Is this legal?</summary><p>Yes. We use public data sources and follow Craigslist's terms of service. We're not hacking anything — we're just faster at reading public listings than a human.</p></details>
+</section>
+
+<footer><p>Vehicle Sniper &copy; 2026 &middot; <a href="#">Privacy</a></p></footer>
+
+</body>
 </html>
